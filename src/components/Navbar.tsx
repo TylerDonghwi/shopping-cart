@@ -1,21 +1,26 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 export default function Navbar() {
 
-    return (
+    const [path, setPath] = useState('/')
 
+    return (
         <div className="sticky bg-white shadow-md flex flex-row items-center h-[4.5rem]">
             <>
                 <Link className='w-[80px] text-center' to="/">
-                    Home
+                    <div onClick={() => setPath('/')}>Home</div>
+                    {path === '/' ? <hr className='relative left-[15px] top-[1.5rem] border-blue-500 w-[50px]'></hr> : null}
                 </Link>
                 <Link className='w-[80px] text-center' to="/store">
-                    Store
+                    <div onClick={() => setPath('/store')}>Store</div>
+                    {path === '/store' ? <hr className='relative left-[15px] top-[1.5rem] border-blue-500 w-[50px]'></hr> : null}
                 </Link>
                 <Link className='w-[80px] text-center' to="/about">
-                    About
+                    <div onClick={() => setPath('/about')}>About</div>
+                    {path === '/about' ? <hr className='relative left-[15px] top-[1.5rem] border-blue-500 w-[50px]'></hr> : null}
                 </Link>
             </>
 
